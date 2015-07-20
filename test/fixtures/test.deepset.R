@@ -2,7 +2,7 @@ options( digits = 16 );
 library( jsonlite );
 
 
-a = 0
+a = 0.5
 b = 1
 probs = seq( 0, 1, 0.1 )
 y = qunif( probs, a, b )

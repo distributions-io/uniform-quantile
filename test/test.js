@@ -127,6 +127,27 @@ describe( 'distributions-uniform-quantile', function tests() {
 		}
 	});
 
+
+	it( 'should throw an error if provided parameters `a` and `b` for which a >= b', function test() {
+		var values = [
+			[ 2, 1 ],
+			[ 3, 3 ],
+			[ -1, -2 ]
+		];
+
+		for ( var i = 0; i < values.length; i++ ) {
+			expect( badValue( values[i] ) ).to.throw( Error );
+		}
+		function badValue( value ) {
+			return function() {
+				quantile( [ 0.2, 0.4, 0.6, 0.8 ], {
+					'a': value[ 0 ],
+					'b': value[ 1 ]
+				});
+			};
+		}
+	});
+
 	it( 'should compute the Uniform quantile when provided a number', function test() {
 		var	validationData = require( './fixtures/number.json' ),
 			data = validationData.data,
@@ -198,14 +219,14 @@ describe( 'distributions-uniform-quantile', function tests() {
 		}
 	});
 
-	it( 'should evaluate the quantle function of the Uniform distribution when provided a typed array', function test() {
+	it( 'should evaluate the quantile function of the Uniform distribution when provided a typed array', function test() {
 		var validationData = require( './fixtures/typedarray.json' ),
 			data,
 			actual,
 			expected,
 			i;
 
-		data = new Float32Array( validationData.data );
+		data = new Float64Array( validationData.data );
 
 		expected = new Float64Array( validationData.expected.map( function( d ) {
 			if (d === 'Inf' ) {
@@ -235,7 +256,7 @@ describe( 'distributions-uniform-quantile', function tests() {
 			'a': validationData.a,
 		'b': validationData.b
 		});
-		expected = new Float32Array( validationData.expected.map( function( d ) {
+		expected = new Float64Array( validationData.expected.map( function( d ) {
 			if (d === 'Inf' ) {
 				return Number.POSITIVE_INFINITY;
 			}

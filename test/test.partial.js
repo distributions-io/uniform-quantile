@@ -9,6 +9,9 @@ var // Expectation library:
 	// Check whether an element is a finite number
 	isFiniteNumber = require( 'validate.io-finite' ),
 
+	// Check whether an element is `NaN`
+	isnan = require( 'validate.io-nan' ),	
+
 	// Module to be tested:
 	partial = require( './../lib/partial.js' );
 

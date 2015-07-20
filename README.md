@@ -6,12 +6,12 @@ Quantile Function
 
 The [quantile function](https://en.wikipedia.org/wiki/Quantile_function) for a [Uniform](https://en.wikipedia.org/wiki/Uniform_distribution) random variable is
 
-<div class="equation" align="center" data-raw-text="" data-equation="eq:quantile_function">
+<div class="equation" align="center" data-raw-text="Q(p) = a + p (b - a)" data-equation="eq:quantile_function">
 	<img src="" alt="Quantile function for a Uniform distribution.">
 	<br>
 </div>
 
-for `0 <= p < 1`, where `a` is the minimum value and `b` is the maximum value.
+for `0 <= p <= 1`, where `a` is the minimum value and `b` is the maximum value.
 
 ## Installation
 
@@ -39,16 +39,20 @@ var matrix = require( 'dstructs-matrix' ),
 	x,
 	i;
 
+/*
+	For standard uniform random variables, the quantile function is equal to the  identity function:
+*/
+
 out = quantile( 0.25 );
-// returns
+// returns 0.25
 
 x = [ 0, 0.2, 0.4, 0.6, 0.8, 1 ];
 out = quantile( x );
-// returns [...]
+// returns [ 0, 0.2, 0.4, 0.6, 0.8, 1 ]
 
 x = new Float32Array( x );
 out = quantile( x );
-// returns Float64Array( [...] )
+// returns Float64Array( [0,0.2,0.4,0.6,0.8,1] )
 
 x = new Float32Array( 6 );
 for ( i = 0; i < 6; i++ ) {
@@ -56,16 +60,16 @@ for ( i = 0; i < 6; i++ ) {
 }
 mat = matrix( x, [3,2], 'float32' );
 /*
-	[   0  1/6
-	  2/6  3/6
-	  4/5  5/6 ]
+	[   0   1/6
+	   2/6  3/6
+	   4/5  5/6 ]
 */
 
 out = quantile( mat );
 /*
-	[
-
-	   ]
+	[   0   1/6
+	   2/6  3/6
+	   4/5  5/6 ]
 */
 ```
 
@@ -85,10 +89,10 @@ A [Uniform](https://en.wikipedia.org/wiki/Uniform_distribution) distribution is 
 var x = [ 0, 0.2, 0.4, 0.6, 0.8, 1 ];
 
 var out = quantile( x, {
-	'a': 7,
-	'b': 9,
+	'a': -10,
+	'b': 10,
 });
-// returns [...]
+// returns [ -10, -6, -2, 0, 2, 6, 10 ]
 ```
 
 For non-numeric `arrays`, provide an accessor `function` for accessing `array` values.
@@ -109,8 +113,10 @@ function getValue( d, i ) {
 
 var out = quantile( data, {
 	'accessor': getValue
+	'a': -10,
+	'b': 10
 });
-// returns [...]
+// returns [ -10, -6, -2, 0, 2, 6, 10 ]
 ```
 
 
@@ -128,16 +134,18 @@ var data = [
 
 var out = quantile( data, {
 	'path': 'x/1',
-	'sep': '/'
+	'sep': '/',
+	'a': -10,
+	'b': 10
 });
 /*
 	[
-		{'x':[0,]},
-		{'x':[1,]},
-		{'x':[2,]},
-		{'x':[3,]},
-		{'x':[4,]},
-		{'x':[5,]}
+		{'x':[0,-10]},
+		{'x':[1,-6]},
+		{'x':[2,-2]},
+		{'x':[3,2]},
+		{'x':[4,6]},
+		{'x':[5,10]}
 	]
 */
 
@@ -153,15 +161,19 @@ var x, out;
 x = new Float32Array( [0,0.2,0.4,0.6,0.8,1] );
 
 out = quantile( x, {
-	'dtype': 'int32'
+	'dtype': 'int32',
+	'a': -10,
+	'b': 10
 });
-// returns Int32Array( [...] )
+// returns Int32Array( [-10,-6,-2,2,6,10] )
 
 // Works for plain arrays, as well...
 out = quantile( [0,0.2,0.4,0.6,0.8,1], {
-	'dtype': 'uint8'
+	'dtype': 'uint8',
+	'a': -10,
+	'b': 10
 });
-// returns Uint8Array( [...] )
+// returns Uint8Array( [-10,-6,-2,2,6,10] )
 ```
 
 By default, the function returns a new data structure. To mutate the input data structure (e.g., when input values can be discarded or when optimizing memory usage), set the `copy` option to `false`.
@@ -178,7 +190,7 @@ x = [ 0, 0.2, 0.4, 0.6, 0.8, 1 ];
 out = quantile( x, {
 	'copy': false
 });
-// returns [...]
+// returns [ 0, 0.2, 0.4, 0.6, 0.8, 1 ]
 
 bool = ( x === out );
 // returns true
@@ -198,9 +210,9 @@ out = quantile( mat, {
 	'copy': false
 });
 /*
-	[
-
-	   ]
+	[   0   1/6
+	   2/6  3/6
+	   4/5  5/6 ]
 */
 
 bool = ( mat === out );

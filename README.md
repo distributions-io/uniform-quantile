@@ -7,7 +7,7 @@ Quantile Function
 The [quantile function](https://en.wikipedia.org/wiki/Quantile_function) for a [Uniform](https://en.wikipedia.org/wiki/Uniform_distribution) random variable is
 
 <div class="equation" align="center" data-raw-text="Q(p) = a + p (b - a)" data-equation="eq:quantile_function">
-	<img src="" alt="Quantile function for a Uniform distribution.">
+	<img src="https://cdn.rawgit.com/distributions-io/uniform-quantile/751ea58f6502f34a4788d8752da68cda6a155abf/docs/img/eqn.svg" alt="Quantile function for a Uniform distribution.">
 	<br>
 </div>
 
@@ -40,7 +40,8 @@ var matrix = require( 'dstructs-matrix' ),
 	i;
 
 /*
-	For standard uniform random variables, the quantile function is equal to the  identity function:
+For standard uniform random variables, 
+the quantile function is equal to the identity function:
 */
 
 out = quantile( 0.25 );

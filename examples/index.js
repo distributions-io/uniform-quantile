@@ -13,7 +13,7 @@ var data,
 // Plain arrays...
 data = new Array( 10 );
 for ( i = 0; i < data.length; i++ ) {
-	data[ i ] = i / 10;
+	data[ i ] = ( i + 1) / 10;
 }
 out = quantile( data );
 console.log( 'Arrays: %s\n', out );
@@ -55,7 +55,7 @@ console.log( '\n' );
 // Typed arrays...
 data = new Float32Array( 10 );
 for ( i = 0; i < data.length; i++ ) {
-	data[ i ] = i / 10;
+	data[ i ] = ( i + 1 ) / 10;
 }
 tmp = quantile( data );
 out = '';

@@ -83,7 +83,7 @@ The function accepts the following `options`:
 *	__path__: [deepget](https://github.com/kgryte/utils-deep-get)/[deepset](https://github.com/kgryte/utils-deep-set) key path.
 *	__sep__: [deepget](https://github.com/kgryte/utils-deep-get)/[deepset](https://github.com/kgryte/utils-deep-set) key path separator. Default: `'.'`.
 
-A [Uniform](https://en.wikipedia.org/wiki/Uniform_distribution) distribution is a function of 2 parameter(s): `a`(minimum value) and `b`(maximum value). By default, `a` is equal to `0` and `b` is equal to `1`. To adjust either parameter, set the corresponding option(s).
+A [Uniform](https://en.wikipedia.org/wiki/Uniform_distribution) distribution is a function of two parameters: `a`(minimum value) and `b`(maximum value). By default, `a` is equal to `0` and `b` is equal to `1`. To adjust either parameter, set the corresponding option.
 
 ``` javascript
 var x = [ 0, 0.2, 0.4, 0.6, 0.8, 1 ];
@@ -169,11 +169,11 @@ out = quantile( x, {
 
 // Works for plain arrays, as well...
 out = quantile( [0,0.2,0.4,0.6,0.8,1], {
-	'dtype': 'uint8',
+	'dtype': 'int32',
 	'a': -10,
 	'b': 10
 });
-// returns Uint8Array( [-10,-6,-2,2,6,10] )
+// returns Int32Array( [-10,-6,-2,2,6,10] )
 ```
 
 By default, the function returns a new data structure. To mutate the input data structure (e.g., when input values can be discarded or when optimizing memory usage), set the `copy` option to `false`.
@@ -304,7 +304,7 @@ var data,
 // Plain arrays...
 data = new Array( 10 );
 for ( i = 0; i < data.length; i++ ) {
-	data[ i ] = i / 10;
+	data[ i ] = ( i + 1 ) / 10;
 }
 out = quantile( data );
 
@@ -335,7 +335,7 @@ out = quantile( data, {
 // Typed arrays...
 data = new Float32Array( 10 );
 for ( i = 0; i < data.length; i++ ) {
-	data[ i ] = i / 10;
+	data[ i ] = ( i + 1 ) / 10;
 }
 out = quantile( data );
 

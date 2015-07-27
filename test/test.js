@@ -165,7 +165,7 @@ describe( 'distributions-uniform-quantile', function tests() {
 			for ( var i = 0; i < data.length; i++ ) {
 				actual =  quantile( data[ i ], {
 					'a': validationData.a,
-		'b': validationData.b
+					'b': validationData.b
 				});
 				if ( isFiniteNumber( actual ) && isFiniteNumber( expected[ i ] ) ) {
 					assert.closeTo( actual, expected[ i ] , 1e-12 );
@@ -195,7 +195,7 @@ describe( 'distributions-uniform-quantile', function tests() {
 
 		actual = quantile( data, {
 			'a': validationData.a,
-		'b': validationData.b
+			'b': validationData.b
 		});
 		assert.notEqual( actual, data );
 
@@ -208,7 +208,7 @@ describe( 'distributions-uniform-quantile', function tests() {
 		actual = quantile( data, {
 			'copy': false,
 			'a': validationData.a,
-		'b': validationData.b
+			'b': validationData.b
 		});
 		assert.strictEqual( actual, data );
 
@@ -240,7 +240,7 @@ describe( 'distributions-uniform-quantile', function tests() {
 
 		actual = quantile( data, {
 			'a': validationData.a,
-		'b': validationData.b
+			'b': validationData.b
 		});
 		assert.notEqual( actual, data );
 
@@ -254,7 +254,7 @@ describe( 'distributions-uniform-quantile', function tests() {
 		actual = quantile( data, {
 			'copy': false,
 			'a': validationData.a,
-		'b': validationData.b
+			'b': validationData.b
 		});
 		expected = new Float64Array( validationData.expected.map( function( d ) {
 			if (d === 'Inf' ) {
@@ -296,7 +296,7 @@ describe( 'distributions-uniform-quantile', function tests() {
 		actual = quantile( data, {
 			'dtype': 'float32',
 			'a': validationData.a,
-		'b': validationData.b
+			'b': validationData.b
 		});
 
 		assert.notEqual( actual, data );
@@ -333,7 +333,7 @@ describe( 'distributions-uniform-quantile', function tests() {
 		actual = quantile( data, {
 			'accessor': getValue,
 			'a': validationData.a,
-		'b': validationData.b
+			'b': validationData.b
 		});
 		assert.notEqual( actual, data );
 
@@ -348,7 +348,7 @@ describe( 'distributions-uniform-quantile', function tests() {
 			'accessor': getValue,
 			'copy': false,
 			'a': validationData.a,
-		'b': validationData.b
+			'b': validationData.b
 		});
 		assert.strictEqual( actual, data );
 
@@ -377,7 +377,7 @@ describe( 'distributions-uniform-quantile', function tests() {
 		actual = quantile( data, {
 			'path': 'x.1',
 			'a': validationData.a,
-		'b': validationData.b
+			'b': validationData.b
 		});
 
 		expected = validationData.expected
@@ -410,7 +410,7 @@ describe( 'distributions-uniform-quantile', function tests() {
 			'path': 'x/1',
 			'sep': '/',
 			'a': validationData.a,
-		'b': validationData.b
+			'b': validationData.b
 		});
 		assert.strictEqual( actual, data );
 
@@ -443,7 +443,7 @@ describe( 'distributions-uniform-quantile', function tests() {
 		mat = matrix( d1, [5,5], 'float64' );
 		out = quantile( mat, {
 			'a': validationData.a,
-		'b': validationData.b
+			'b': validationData.b
 		});
 
 		for ( i = 0; i < out.length; i++ ) {
@@ -456,7 +456,7 @@ describe( 'distributions-uniform-quantile', function tests() {
 		out = quantile( mat, {
 			'copy': false,
 			'a': validationData.a,
-		'b': validationData.b
+			'b': validationData.b
 		});
 		assert.strictEqual( mat, out );
 
@@ -490,7 +490,7 @@ describe( 'distributions-uniform-quantile', function tests() {
 		out = quantile( mat, {
 			'dtype': 'float32',
 			'a': validationData.a,
-		'b': validationData.b
+			'b': validationData.b
 		});
 
 		assert.strictEqual( out.dtype, 'float32' );

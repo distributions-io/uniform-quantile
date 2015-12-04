@@ -1,17 +1,17 @@
 Quantile Function
 ===
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies][dependencies-image]][dependencies-url]
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][codecov-image]][codecov-url] [![Dependencies][dependencies-image]][dependencies-url]
 
-> [Uniform](https://en.wikipedia.org/wiki/Uniform_distribution) distribution [quantile function](https://en.wikipedia.org/wiki/Quantile_function).
+> [Continuous uniform](https://en.wikipedia.org/wiki/Uniform_distribution) distribution [quantile function](https://en.wikipedia.org/wiki/Quantile_function).
 
-The [quantile function](https://en.wikipedia.org/wiki/Quantile_function) for a [Uniform](https://en.wikipedia.org/wiki/Uniform_distribution) random variable is
+The [quantile function](https://en.wikipedia.org/wiki/Quantile_function) for a [continuous uniform](https://en.wikipedia.org/wiki/Uniform_distribution) random variable is
 
 <div class="equation" align="center" data-raw-text="Q(p) = a + p (b - a)" data-equation="eq:quantile_function">
 	<img src="https://cdn.rawgit.com/distributions-io/uniform-quantile/751ea58f6502f34a4788d8752da68cda6a155abf/docs/img/eqn.svg" alt="Quantile function for a Uniform distribution.">
 	<br>
 </div>
 
-for `0 <= p <= 1`, where `a` is the minimum value and `b` is the maximum value.
+for `0 <= p <= 1`, where `a` is the minimum support and `b` is the maximum support.
 
 ## Installation
 
@@ -30,7 +30,7 @@ var quantile = require( 'distributions-uniform-quantile' );
 
 #### quantile( p[, options] )
 
-Evaluates the [quantile function](https://en.wikipedia.org/wiki/Quantile_function) for the [Uniform](https://en.wikipedia.org/wiki/Uniform_distribution) distribution. `p` may be either a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) between `0` and `1`, an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix).
+Evaluates the [quantile function](https://en.wikipedia.org/wiki/Quantile_function) for the [continuous uniform](https://en.wikipedia.org/wiki/Uniform_distribution) distribution. `p` may be either a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) between `0` and `1`, an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix).
 
 ``` javascript
 var matrix = require( 'dstructs-matrix' ),
@@ -40,7 +40,7 @@ var matrix = require( 'dstructs-matrix' ),
 	i;
 
 /*
-For standard uniform random variables, 
+For standard uniform random variables,
 the quantile function is equal to the identity function:
 */
 
@@ -76,15 +76,15 @@ out = quantile( mat );
 
 The function accepts the following `options`:
 
-*	__a__: minimum value. Default: `0`.
-*	__b__: maximum value. Default: `1`.
+*	__a__: minimum support. Default: `0`.
+*	__b__: maximum support. Default: `1`.
 * 	__accessor__: accessor `function` for accessing `array` values.
 * 	__dtype__: output [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays) or [`matrix`](https://github.com/dstructs/matrix) data type. Default: `float64`.
 *	__copy__: `boolean` indicating if the `function` should return a new data structure. Default: `true`.
 *	__path__: [deepget](https://github.com/kgryte/utils-deep-get)/[deepset](https://github.com/kgryte/utils-deep-set) key path.
 *	__sep__: [deepget](https://github.com/kgryte/utils-deep-get)/[deepset](https://github.com/kgryte/utils-deep-set) key path separator. Default: `'.'`.
 
-A [Uniform](https://en.wikipedia.org/wiki/Uniform_distribution) distribution is a function of two parameters: `a`(minimum value) and `b`(maximum value). By default, `a` is equal to `0` and `b` is equal to `1`. To adjust either parameter, set the corresponding option.
+A [continuous uniform](https://en.wikipedia.org/wiki/Uniform_distribution) distribution is a function of two parameters: `a`(minimum support) and `b`(maximum support). By default, `a` is equal to `0` and `b` is equal to `1`. To adjust either parameter, set the corresponding option.
 
 ``` javascript
 var x = [ 0, 0.2, 0.4, 0.6, 0.8, 1 ];
@@ -402,8 +402,8 @@ Copyright &copy; 2015. The [Compute.io](https://github.com/compute-io) Authors.
 [travis-image]: http://img.shields.io/travis/distributions-io/uniform-quantile/master.svg
 [travis-url]: https://travis-ci.org/distributions-io/uniform-quantile
 
-[coveralls-image]: https://img.shields.io/coveralls/distributions-io/uniform-quantile/master.svg
-[coveralls-url]: https://coveralls.io/r/distributions-io/uniform-quantile?branch=master
+[codecov-image]: https://img.shields.io/codecov/c/github/distributions-io/uniform-quantile/master.svg
+[codecov-url]: https://codecov.io/github/distributions-io/uniform-quantile?branch=master
 
 [dependencies-image]: http://img.shields.io/david/distributions-io/uniform-quantile.svg
 [dependencies-url]: https://david-dm.org/distributions-io/uniform-quantile

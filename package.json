@@ -1,7 +1,7 @@
 {
   "name": "distributions-uniform-quantile",
   "version": "0.0.0",
-  "description": "Uniform  distribution quantile function.",
+  "description": "Uniform distribution quantile function.",
   "author": {
     "name": "Philipp Burckhardt",
     "email": "pburckhardt@outlook.com"
@@ -20,19 +20,24 @@
   "main": "./lib",
   "repository": {
     "type": "git",
-    "url": "git://github.com/compute-io/uniform-quantile.git"
+    "url": "git://github.com/distributions-io/uniform-quantile.git"
   },
   "keywords": [
     "distributions.io",
     "distributions",
+    "distribution",
     "probability",
     "statistics",
     "stats",
     "cdf",
-    "inverse"
+    "inverse",
+    "icdf",
+    "continuous",
+    "symmetric",
+    "univariate"
   ],
   "bugs": {
-    "url": "https://github.com/compute-io/uniform-quantile/issues"
+    "url": "https://github.com/distributions-io/uniform-quantile/issues"
   },
   "dependencies": {
     "compute-array-constructors": "^1.0.0",
@@ -54,7 +59,6 @@
   "devDependencies": {
     "chai": "3.x.x",
     "mocha": "2.x.x",
-    "coveralls": "^2.11.1",
     "istanbul": "^0.3.0",
     "jshint": "2.x.x",
     "jshint-stylish": "2.x.x",
